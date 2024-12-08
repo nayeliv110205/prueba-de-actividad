@@ -1,0 +1,143 @@
+public class SistemaGestionTorneo {
+   public static void main(String[] args) {
+     Torneo torneo new Torneo
+     
+     //Registrar equipos
+     Equipo equipol new Equipo ("Real Madrid", "Carlo Ancelotti");
+     equipol.agregarJugador ("Benzema, Juano, Carlitos, MegaPorter, Messi, Pele");
+     equipol.agregarJugador ("Modric, Pepe, Josue, Javito, Don Joshep, Maradona");
+     
+     
+     Equipo equipo2 new Equipo ("Barcelona", "Xavi Hernandez");
+     equipo2.agregarJugador ("Lewandowski, Malotetron, Optimus, Bumbulbee, Megatron");
+     equipo2.agregarJugador ("Pedri, Shokwave, Soudnwave, Chitor, Rattramp, Rino");
+     
+     torneo.registrarEquipo (equipol);
+     torneo.registrarEquipo (equipo2);
+     
+     
+     torneo.crearPartido (equipol, equipo2, "2024-12-10");
+     
+     
+     torneo.mostrarEquipos();
+     
+     torneo.mostrarHistorialPartidos();
+
+     
+     torneo.partidos.get(0).actualizarResultado ("3-1");
+     System.out.println("\nHistorial actualizado:");
+     torneo.mostrarHistorialPartidos();
+     
+
+		
+	}
+
+
+
+class Partido (
+       public Equipo equipol;
+       public Equipo equipo2;
+       public String fecha;
+       public String estado;
+       public String marcador;
+       
+       
+     
+       public Partido (Equipo equipol, Equipo equipo2, String fecha) (
+           this.equipol equipol;
+           this.equipo2 = equipo2;
+           this.fecha = fecha;
+           this.estado "Pendiente";
+           this.marcador = "0-1";
+        }
+        
+        
+        public void actualizarResultado (String marcador) (
+          this.marcador = marcador;
+          this.estado "Finalizado";
+        }
+        
+        @Override
+        public String toString() {
+          return "Partido: + equipol.nombre + "VS+ equipo2.nombre + ", Fecha: + fecha + ",     
+                  "Estado:"+ estado +", Marcador:"" + marcador;
+        }          
+    }
+
+
+
+
+   import java.util.ArrayList;
+   import java.util.List;
+   
+   class Equipo {
+      public String nombre;
+      public String entrenador;
+      public List<String> jugadores:
+      
+      public Equipo (String nombre, String entrenador) {
+          this.nombre nombre;
+          this.entrenador entrenador;
+          this.jugadores = new ArrayList<>();
+        }
+        
+        
+    
+       public void agregarJugador (String jugador) {
+          jugadores.add(jugador);
+       }
+       
+       @Override
+       public String toString() {
+          return "Equipo: " + nombre ", Entrenador: + entrenador+", Jugadores: + jugadores;
+          
+       }
+   }
+
+
+
+import java.util.ArrayList;
+   import java.util.List;
+
+
+   class Torneo (
+       public List<Equipo> equipos;
+       public List<Partido> partidos;
+       
+       
+       public Torneo () {
+          this.equipos new ArrayList<>();
+          this.partidos new ArrayList<>();
+        }
+        
+        
+        public void registrarEquipo (Equipo equipo) {
+          equipos.add(equipo);
+        }
+        
+        
+        public void crearPartido (Equipo equipol, Equipo equipo2, String fecha) {
+           Partido partido new Partido (equipol, equipo2, fecha);
+           partidos.add(partido);
+        }
+        
+        
+        public void mostrarEquipos () {
+           System.out.println("Equipos registrados:");
+           for (Equipo equipo equipos) {
+               System.out.println(equipo);
+            }
+        } 
+        
+        
+        public void mostrarHistorial Partidos() {
+          System.out.println("Historial de partidos:");
+          for (Partido partido partidos) {
+               System.out.println(partido);
+          }
+        }
+    }
+
+
+
+
